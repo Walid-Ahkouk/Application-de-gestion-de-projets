@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="UP_PROJECT" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Lister toutes les classes d'entités ici -->
+        <class>ma.projet.entities.Employe</class>
+        <class>ma.projet.entities.Projet</class>
+        <class>ma.projet.entities.Tache</class>
+        <class>ma.projet.entities.EmployeTache</class>
+        <class>ma.projet.entities.EmployeTachePK</class>
+
+        <properties>
+            <!-- Configuration de la base de données PostgreSQL -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/project_db"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/>
+
+            <!-- Dialecte Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+
+            <!-- Affiche les requêtes SQL dans la console -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Stratégie de génération du schéma de la base de données -->
+            <!-- 'create' : supprime et recrée le schéma à chaque fois -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>
